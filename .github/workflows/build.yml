@@ -33,7 +33,6 @@ jobs:
 
       - name: Trigger external workflow
         uses: actions/github-script@v6
-        run: 
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
         with:
