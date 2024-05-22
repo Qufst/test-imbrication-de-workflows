@@ -29,14 +29,15 @@ jobs:
       - name: Trigger external workflow
         uses: actions/github-script@v6
         with:
-            github-token: ${{ secrets.REPO_DISPATCH_TOKEN }}
-            script: |
-              github.rest.repos.createDispatchEvent({
-                owner: 'Qufst',
-                repo: 'projet-personnel-m-t-o ',
-                event_type: 'custom-event',
-                client_payload: {
-                  ref: 'main', // Branch you want to trigger the workflow on
-                  additional_parameter: 'value' // Additional parameters if needed
-                }
-              })
+          script: |
+            github.rest.repos.createDispatchEvent({
+              owner: 'Qufst',
+              repo: 'projet-personnel-m-t-o',
+              event_type: 'custom-event',
+              client_payload: {
+                ref: 'main', // Branch you want to trigger the workflow on
+                additional_parameter: 'value' // Additional parameters if needed
+              }
+            })
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
