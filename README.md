@@ -10,5 +10,6 @@ Première idée: Introduire dans le workflows du dépôt principal une méthode 
 
 Problème 1: Comment agir sur un dépôt dont on a les droits depuis un autre dépôt qui nous appartient également?
 
-idée 1: Générer un Token permettant le contrôle sur les répertoires privés, (est-ce que ça signifie que ça ne fonctionne pas avec des répos publics, ou juste que les dépôts doivent nous appartenir?), et de pouvoir mettre à jour le 'github action workflows'.
+solution utilisée: utilisation d'un TOKEN pour faire un commit vide sur l'autre répertoire. Le workflows du répertoire cible possède une configuration permettant de se lancer à chaque commit.
+
 
