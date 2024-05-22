@@ -28,6 +28,8 @@ jobs:
 
       - name: Trigger external workflow
         uses: actions/github-script@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
         with:
           script: |
             github.rest.repos.createDispatchEvent({
@@ -39,5 +41,3 @@ jobs:
                 additional_parameter: 'value' // Additional parameters if needed
               }
             })
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
