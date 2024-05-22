@@ -1,0 +1,22 @@
+name: build
+
+on:
+    schedule:
+      - cron: '0 0 * * 0' 
+    push:
+      branches:
+        - main
+
+env: 
+    GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+    steps: 
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+        tinytex: true
+
+      - name: Install Computo extension for Quarto
+        run: |
+            quarto add --no-prompt computorg/computo-quarto-extension
