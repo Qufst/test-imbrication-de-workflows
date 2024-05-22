@@ -1,4 +1,4 @@
-name: build
+name: Build
 
 on:
   schedule:
@@ -10,9 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env: 
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -26,14 +24,14 @@ jobs:
         run: |
           quarto add --no-prompt computorg/computo-quarto-extension
 
-          - name: Trigger external workflow with empty commit
-          env:
-            GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
-          run: |
-            git clone https://github.com/Qufst/projet-personnel-m-t-o.git
-            cd projet-personnel-m-t-o
-            git config --global user.email "your-email@example.com"
-            git config --global user.name "Your Name"
-            git checkout main
-            git commit --allow-empty -m "Trigger workflow from another repo"
-            git push origin main
+      - name: Trigger external workflow with empty commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
+        run: |
+          git clone https://github.com/Qufst/projet-personnel-m-t-o.git
+          cd projet-personnel-m-t-o
+          git config --global user.email "quentin.festor@etu.umontpellier.fr"
+          git config --global user.name "Qufst"
+          git checkout main
+          git commit --allow-empty -m "Trigger workflow from another repo"
+          git push origin main
