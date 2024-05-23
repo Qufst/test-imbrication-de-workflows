@@ -30,6 +30,7 @@ jobs:
       - name: Trigger external workflow with empty commit
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
+          GITHUB_REPOSITORY_URL: https://x-access-token:${{ secrets.token }}@github.com/Qufst/projet-personnel-m-t-o.git
         run: |
           git clone https://github.com/Qufst/projet-personnel-m-t-o.git
           cd projet-personnel-m-t-o
@@ -38,4 +39,4 @@ jobs:
           git checkout main
           git commit --allow-empty -m "Trigger workflow from another repo"
           git remote set-url origin https://github.com/Qufst/projet-personnel-m-t-o.git
-          git push origin main
+          git push $GITHUB_REPOSITORY_URL origin main
