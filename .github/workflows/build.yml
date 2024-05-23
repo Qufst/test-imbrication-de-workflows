@@ -26,13 +26,16 @@ jobs:
       - name: Install Computo extension for Quarto
         run: |
           quarto add --no-prompt computorg/computo-quarto-extension
+
+      - name: Trigger external workflow with empty commit
         env:
-          REPO_DISPATCH_TOKEN: ${{ secrets.token }}
+          GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
         run: |
-          git clone https://x-access-token:${{ secrets.token }}@github.com/Qufst/projet-personnel-m-t-o.git
-          cd projet-personnel-m-t-o
-          git config --global user.email "quentin.festor@etu.umontpellier.fr"
-          git config --global user.name "Qufst"
-          git checkout main
-          git commit --allow-empty -m "Trigger workflow from another repo"
-          git push https://x-access-token:${{ secrets.token }}@github.com/Qufst/projet-personnel-m-t-o.git main
+        git clone https://x-access-token:${{ secrets.token }}@github.com/Qufst/projet-personnel-m-t-o.git
+        cd projet-personnel-m-t-o
+        git config --global user.email "quentin.festor@etu.umontpellier.fr"
+        git config --global user.name "Qufst"
+        git checkout main
+        git commit --allow-empty -m "Trigger workflow from another repo"
+        git push https://x-access-token:${{ secrets.REPO_DISPATCH_TOKEN }}@github.com/Qufst/projet-personnel-m-t-o.git main
+
