@@ -37,5 +37,4 @@ jobs:
           git config --global user.name "Qufst"
           git checkout main
           git commit --allow-empty -m "Trigger workflow from another repo"
-          git remote set-url origin https://x-access-token:${{ secrets.REPO_DISPATCH_TOKEN }}@github.com/Qufst/projet-personnel-m-t-o.git
           git push origin main
