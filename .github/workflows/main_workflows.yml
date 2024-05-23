@@ -29,7 +29,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   custom-event:
-    uses: 'Qufst/projet-personnel-m-t-o/.github/workflows/build.yml'
+    uses: 'Qufst/projet-personnel-m-t-o/.github/workflows/build.yml@main'
     with:
       token: ${{ secrets.REPO_DISPATCH_TOKEN }}
       config-path: 'Qufst/projet-personnel-m-t-o/environment.yml'
