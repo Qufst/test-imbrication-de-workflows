@@ -1,11 +1,14 @@
 name: Build
 
 on:
-  schedule:
-    - cron: '0 0 * * 0'
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
   build:
@@ -36,3 +39,5 @@ jobs:
           git commit --allow-empty -m "Trigger workflow from another repo"
           git remote set-url origin https://x-access-token:${{ secrets.REPO_DISPATCH_TOKEN }}@github.com/Qufst/projet-personnel-m-t-o.git
           git push origin main
+        
+

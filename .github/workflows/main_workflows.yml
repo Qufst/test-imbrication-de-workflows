@@ -1,0 +1,15 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  call_quarto_workflows:
+    uses: Qufst/test-imbrication-workflows/.github/workflows/quarto_workflows.yml
+  call_micromamba_workflows:
+    uses: Qufst/test-imbrication-workflows/.github/workflows/micromamba_workflows.yml
+  call_build:
+    uses: build.yml

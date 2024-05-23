@@ -1,0 +1,24 @@
+name: Micromamba
+
+on:
+    workflow_call:
+      inputs:
+        config-path:
+          required: true
+          type: string
+      secrets:
+        token:
+          required: true
+
+jobs:
+  Micromamba:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checking out repository
+        uses: actions/checkout@v3
+      
+      - name: Installing dependencies with Micromamba
+        uses: mamba-org/provision-with-micromamba@v14
+        with:
+          cache-env: true
