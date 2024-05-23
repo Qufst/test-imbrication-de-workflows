@@ -30,7 +30,7 @@ jobs:
       - name: Trigger external workflow with empty commit
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
-          GITHUB_REPOSITORY_URL: https://x-access-token:${{ secrets.token }}@github.com/Qufst/projet-personnel-m-t-o.git
+          GITHUB_REPOSITORY_URL: https://x-access-token:${{ secrets.REPO_DISPATCH_TOKEN }}@github.com/Qufst/projet-personnel-m-t-o.git
         run: |
           git clone https://github.com/Qufst/projet-personnel-m-t-o.git
           cd projet-personnel-m-t-o
