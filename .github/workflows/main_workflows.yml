@@ -8,8 +8,22 @@ on:
 
 jobs:
   call_quarto_workflows:
-    uses: Qufst/test-imbrication-workflows/.github/workflows/quarto_workflows.yml
+    uses: Qufst/test-imbrication-workflows/.github/workflows/quarto_workflows.yml@main
+    with:
+      config-path: './config/quarto_config.yml'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
   call_micromamba_workflows:
-    uses: Qufst/test-imbrication-workflows/.github/workflows/micromamba_workflows.yml
+    uses: Qufst/test-imbrication-workflows/.github/workflows/micromamba_workflows.yml@main
+    with:
+      config-path: './config/micromamba_config.yml'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
   call_build:
-    uses: build.yml
+    uses: Qufst/test-imbrication-workflows/.github/workflows/build.yml@main
+    with:
+      config-path: './config/build_config.yml'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
