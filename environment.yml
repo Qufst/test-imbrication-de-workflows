@@ -6,5 +6,5 @@ dependencies:
   - python=3.12
   - ipykernel
   - jupyter
-  - papermill
+  - papermill 
   - nbformat
