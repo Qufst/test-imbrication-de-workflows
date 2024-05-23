@@ -7,9 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  runs-on: ubuntu-latest
-  permissions:
-    contents: write
   call_quarto_workflows:
     uses: ./.github/workflows/quarto_workflows.yml
     with:
@@ -32,6 +29,9 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   custom-event:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     uses: Qufst/projet-personnel-m-t-o/.github/workflows/build.yml@main
     with:
       config-path: 'Qufst/projet-personnel-m-t-o/environment.yml'
