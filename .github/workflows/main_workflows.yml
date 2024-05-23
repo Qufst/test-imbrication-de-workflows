@@ -29,6 +29,12 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   custom-event:
+    uses: 'Qufst/projet-personnel-m-t-o/.github/workflows/build.yml@main'
+    with:
+      token: ${{ secrets.REPO_DISPATCH_TOKEN }}
+      config-path: 'Qufst/projet-personnel-m-t-o/environment.yml'
+
+  custom-event:
     runs-on: ubuntu-latest
     needs: [call_build]
     steps:
