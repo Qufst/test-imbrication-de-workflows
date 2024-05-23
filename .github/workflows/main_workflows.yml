@@ -32,4 +32,5 @@ jobs:
     uses: Qufst/projet-personnel-m-t-o/.github/workflows/build.yml@main
     with:
       config-path: 'Qufst/projet-personnel-m-t-o/environment.yml'
-    token: ${{ secrets.REPO_DISPATCH_TOKEN }}
+    secrets:
+      token: ${{ secrets.REPO_DISPATCH_TOKEN }}
