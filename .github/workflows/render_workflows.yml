@@ -3,7 +3,7 @@ name: render
 on:
   workflow_call:
     inputs:
-      config-path:
+      config-path: './config/quarto_config.yml'
         required: true
         type: string
     secrets:
@@ -17,6 +17,5 @@ jobs:
 
     steps:
       - name: Render and publish with Quarto
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
+        run: |
+          quarto render ./index.qmd
