@@ -21,20 +21,6 @@ jobs:
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
 
-  call_build:
-    - name: Trigger external workflow with empty commit
-    env:
-      GITHUB_TOKEN: ${{ secrets.REPO_DISPATCH_TOKEN }}
-      GITHUB_REPOSITORY_URL: https://x-access-token:${{ secrets.REPO_DISPATCH_TOKEN }}@github.com/Qufst/projet-personnel-m-t-o.git
-    run: |
-      git clone https://github.com/Qufst/projet-personnel-m-t-o.git
-      cd projet-personnel-m-t-o
-      git config --global user.email "quentin.festor@etu.umontpellier.fr"
-      git config --global user.name "Qufst"
-      git checkout main
-      git commit --allow-empty -m "Trigger workflow from another repo"
-      git remote set-url origin https://github.com/Qufst/projet-personnel-m-t-o.git
-      git push $GITHUB_REPOSITORY_URL origin main
 
   custom-event:
     uses: Qufst/projet-personnel-m-t-o/.github/workflows/build.yml@main
@@ -42,5 +28,15 @@ jobs:
       config-path: 'Qufst/projet-personnel-m-t-o/environment.yml'
     secrets:
       token: ${{ secrets.REPO_DISPATCH_TOKEN }}
+    permissions:
+      contents: write
+
+  render:
+    needs: [call_quarto_workflows]
+    uses: ./.github/workflows/render_workflows.yml
+    with:
+      config-path: './config/quarto_config.yml'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write

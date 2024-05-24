@@ -1,0 +1,14 @@
+name: render
+
+on:
+    workflow_dispatch:
+
+jobs:
+  quarto:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Render and publish with Quarto
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages

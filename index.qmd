@@ -1,0 +1,34 @@
+---
+title: "Arbre Hiérarchique des workflows"
+format: html
+editor: visual
+---
+
+```{r}
+---
+title: "Graphique avec DiagrammeR"
+format: html
+editor: visual
+---
+
+```{r}
+library(DiagrammeR)
+
+grViz("
+digraph boxes_and_arrows {
+  node [shape = box, style = filled, fillcolor = lightblue]
+  
+  A [label = 'main_workflows']
+  B [label = 'another_repository_workflows']
+  C [label = 'quarto_workflows']
+  D [label = 'micromamba_workflows']
+  E [label = 'render_workflows']
+
+  A -> B [label = 'Execution du workflows à distance dans l'environnement local']
+  A -> C [label = 'Execution']
+  A -> D [label = 'Execution']
+  A -> E [label = 'Execution']
+}
+")
+
+```
