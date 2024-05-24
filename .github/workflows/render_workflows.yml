@@ -3,7 +3,9 @@ name: render
 on:
   workflow_call:
     inputs:
-      config-path: './config/quarto_config.yml'
+      config-path:
+        required: true
+        type: string
     secrets:
       token:
         required: true
@@ -11,10 +13,16 @@ on:
 
 
 jobs:
+  install_quarto:
+    uses: ./.github/workflows/quarto_workflows.yml
+    with:
+      config-path: './config/quarto_config.yml'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
   quarto:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Render and publish with Quarto
-        run: |
-          quarto render ./index.qmd
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
