@@ -32,7 +32,6 @@ jobs:
       contents: write
 
   render:
-    needs: [call_quarto_workflows]
     uses: ./.github/workflows/render_workflows.yml
     with:
       config-path: './config/quarto_config.yml'
