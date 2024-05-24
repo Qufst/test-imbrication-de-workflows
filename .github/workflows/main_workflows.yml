@@ -6,6 +6,7 @@ on:
       - main
   workflow_dispatch:
 
+
 jobs:
   call_quarto_workflows:
     uses: ./.github/workflows/quarto_workflows.yml
