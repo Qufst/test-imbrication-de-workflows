@@ -3,9 +3,7 @@ name: quarto
 on:
   workflow_call:
     inputs:
-      config-path:
-        required: true
-        type: string
+      config-path: './config/quarto_config.yml'
     secrets:
       token:
         required: true
